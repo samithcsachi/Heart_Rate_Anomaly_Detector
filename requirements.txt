@@ -1,4 +1,5 @@
 pandas
+faker
 mlflow
 notebook
 numpy

@@ -1,0 +1,19 @@
+artifacts_root: artifacts
+
+data_generation:
+  root_dir: artifacts/data_generation
+  local_data_files:
+    readings: artifacts/data_generation/data/Health_Dataset_readings.csv
+    users: artifacts/data_generation/data/Health_Dataset_users.csv
+
+
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  local_data_files:
+    readings: artifacts/data_generation/data/Health_Dataset_readings.csv
+    users: artifacts/data_generation/data/Health_Dataset_users.csv
+
+
+
+

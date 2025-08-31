@@ -1,1 +1,87 @@
-key : value 
+COLUMNS:
+  # User Information
+  user_id: object
+  name: object
+  email: object
+  age: int64
+  gender: object
+  weight_kg: float64
+  height_cm: float64
+  bmi: float64
+  fitness_level: object
+  performance_level: object
+  resting_hr: int64
+  max_hr: int64
+  conditions: object
+  medications: object
+  smoker: bool
+  caffeine_user: bool
+  alcohol_user: bool
+  sleep_quality: object
+  registration_date: object
+
+  # Health Readings
+  timestamp: object
+  heart_rate: float64
+  resting_hr_baseline: int64
+  activity_type: object
+  activity_intensity: float64
+  steps_5min: int64
+  calories_5min: float64
+  hrv_rmssd: float64
+  stress_score: int64
+  is_anomaly: bool
+  anomaly_type: float64
+  anomaly_severity: float64
+  confidence_score: float64
+  signal_quality: float64
+  skin_temperature: float64
+  device_battery: int64
+  elevation_gain: int64
+  sleep_stage: object
+
+MODELS:
+  HeartRatePredictor:
+    TARGET_COLUMN: heart_rate
+    FEATURES:
+      - user_id
+      - age
+      - gender
+      - weight_kg
+      - height_cm
+      - bmi
+      - fitness_level
+      - performance_level
+      - resting_hr
+      - max_hr
+      - activity_type
+      - activity_intensity
+      - steps_5min
+      - calories_5min
+      - hrv_rmssd
+      - stress_score
+      - signal_quality
+      - skin_temperature
+      - device_battery
+      - elevation_gain
+      - sleep_stage
+      - timestamp
+
+  AnomalyDetector:
+    TARGET_COLUMN: is_anomaly
+    FEATURES:
+      - heart_rate
+      - resting_hr_baseline
+      - activity_type
+      - activity_intensity
+      - steps_5min
+      - calories_5min
+      - hrv_rmssd
+      - stress_score
+      - confidence_score
+      - signal_quality
+      - skin_temperature
+      - device_battery
+      - elevation_gain
+      - sleep_stage
+      - timestamp

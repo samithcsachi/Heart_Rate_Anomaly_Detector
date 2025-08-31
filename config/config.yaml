@@ -8,9 +8,9 @@ data_generation:
 
 
 
-data_ingestion:
-  root_dir: artifacts/data_ingestion
-  local_data_files:
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path:
     readings: artifacts/data_generation/data/Health_Dataset_readings.csv
     users: artifacts/data_generation/data/Health_Dataset_users.csv
 

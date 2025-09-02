@@ -1,4 +1,4 @@
-COLUMNS:
+columns:
   # User Information
   user_id: object
   name: object
@@ -40,10 +40,10 @@ COLUMNS:
   elevation_gain: int64
   sleep_stage: object
 
-MODELS:
+models:
   HeartRatePredictor:
-    TARGET_COLUMN: heart_rate
-    FEATURES:
+    target_column: heart_rate
+    features:
       - user_id
       - age
       - gender
@@ -68,8 +68,8 @@ MODELS:
       - timestamp
 
   AnomalyDetector:
-    TARGET_COLUMN: is_anomaly
-    FEATURES:
+    target_column: is_anomaly
+    features:
       - heart_rate
       - resting_hr_baseline
       - activity_type

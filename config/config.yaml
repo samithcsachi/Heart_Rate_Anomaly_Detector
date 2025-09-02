@@ -15,5 +15,16 @@ data_transformation:
     users: artifacts/data_generation/data/Health_Dataset_users.csv
 
 
+model_trainer:
+  root_dir: artifacts/model_trainer
+  data_path:
+    train_heart_rate: artifacts/data_transformation/train_heart_rate.csv
+    test_heart_rate: artifacts/data_transformation/test_heart_rate.csv
+    train_is_anomaly: artifacts/data_transformation/train_is_anomaly.csv
+    test_is_anomaly: artifacts/data_transformation/test_is_anomaly.csv
+  model_name: 
+    heart_rate_predictor: Heart_Rate_Predictor_model.joblib
+    anomaly_detector: Anomaly_Detector_model.joblib
+
 
 

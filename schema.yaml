@@ -21,7 +21,7 @@ columns:
   registration_date: object
 
   # Health Readings
-  timestamp: object
+  date: object
   heart_rate: float64
   resting_hr_baseline: int64
   activity_type: object
@@ -65,7 +65,7 @@ models:
       - device_battery
       - elevation_gain
       - sleep_stage
-      - timestamp
+      - date
 
   AnomalyDetector:
     target_column: is_anomaly
@@ -84,4 +84,4 @@ models:
       - device_battery
       - elevation_gain
       - sleep_stage
-      - timestamp
+      - date

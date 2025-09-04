@@ -5,8 +5,16 @@ HEART_RATE_PREDICTOR:
   random_state: 42
   
 
+#ANOMALY_DETECTOR:
+  #algorithm: "one_class_svm"
+  #kernel: "linear"       # common choices: "rbf", "linear", "poly", "sigmoid"
+  #nu: 0.05            # proportion of anomalies (like contamination)
+  #gamma: "scale"      # kernel coefficient ("scale" or "auto" usually fine)
+
+
 ANOMALY_DETECTOR:
-  algorithm: "isolation_forest"  
-  contamination: 0.1
-  n_estimators: 100
+  algorithm: "lightgbm"
+  n_estimators: 500
+  learning_rate: 0.05
+  max_depth: 7
   random_state: 42

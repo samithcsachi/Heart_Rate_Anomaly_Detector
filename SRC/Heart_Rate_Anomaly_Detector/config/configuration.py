@@ -1,6 +1,6 @@
 from Heart_Rate_Anomaly_Detector.constants import  *
 from Heart_Rate_Anomaly_Detector.utils.common import read_yaml, create_directories
-from Heart_Rate_Anomaly_Detector.entity.config_entity import (DataGenerationConfig, DataTransformationConfig)
+from Heart_Rate_Anomaly_Detector.entity.config_entity import (DataGenerationConfig, DataTransformationConfig, ModelTrainerConfig)
 
 
 
@@ -44,3 +44,47 @@ class ConfigurationManager:
             target_column=model_schema.target_column,
             features=model_schema.features
     )
+
+
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        
+        
+        heart_rate_params = self.params.HEART_RATE_PREDICTOR
+        anomaly_params = self.params.ANOMALY_DETECTOR
+        
+       
+        heart_rate_model_schema = self.schema.models.HeartRatePredictor
+        anomaly_model_schema = self.schema.models.AnomalyDetector
+
+        create_directories([config.root_dir])
+
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=Path(config.root_dir),
+            train_heart_rate_data_path=Path(config.data_path.train_heart_rate),
+            test_heart_rate_data_path=Path(config.data_path.test_heart_rate),
+            train_is_anomaly_data_path=Path(config.data_path.train_is_anomaly),
+            test_is_anomaly_data_path=Path(config.data_path.test_is_anomaly),
+            data_transformation_dir=Path(self.config.data_transformation.root_dir),
+            
+         
+            heart_rate_predictor_model_name=config.model_name.heart_rate_predictor,
+            anomaly_detector_model_name=config.model_name.anomaly_detector,
+            
+           
+            heart_rate_target_column=heart_rate_model_schema.target_column,
+            anomaly_target_column=anomaly_model_schema.target_column
+        )
+        return model_trainer_config
+    
+    def get_heart_rate_features(self) -> list:
+       
+        return self.schema.models.HeartRatePredictor.features
+    
+    def get_anomaly_features(self) -> list:
+       
+        return self.schema.models.AnomalyDetector.features
+    
+    def get_column_dtypes(self) -> dict:
+        
+        return self.schema.columns

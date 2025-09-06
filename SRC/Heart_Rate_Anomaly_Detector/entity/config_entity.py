@@ -17,3 +17,21 @@ class DataTransformationConfig:
     data_path_users: Path
     target_column: str
     features: List[str]
+
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_heart_rate_data_path: Path
+    test_heart_rate_data_path: Path
+    train_is_anomaly_data_path: Path
+    test_is_anomaly_data_path: Path
+    data_transformation_dir: Path  
+    
+   
+    heart_rate_predictor_model_name: str
+    anomaly_detector_model_name: str
+    
+    
+    heart_rate_target_column: str
+    anomaly_target_column: str

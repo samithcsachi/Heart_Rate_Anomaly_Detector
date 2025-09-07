@@ -247,7 +247,14 @@ class ModelTrainer:
             "metrics": metrics
         }
 
-        model_path = os.path.join(self.config.root_dir, f"{self.model_name}.joblib")
+        if self.model_name == "HeartRatePredictor":
+            model_filename = self.config.heart_rate_predictor_model_name
+        elif self.model_name == "AnomalyDetector":
+            model_filename = self.config.anomaly_detector_model_name
+        else: raise ValueError(f"Unsupported model name: {self.model_name}")
+        
+
+        model_path = os.path.join(self.config.root_dir, model_filename)
         joblib.dump(model_artifacts, model_path)
         logger.info(f"Model artifacts saved at: {model_path}")
 

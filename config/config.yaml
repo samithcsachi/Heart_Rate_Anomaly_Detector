@@ -27,4 +27,19 @@ model_trainer:
     anomaly_detector: Anomaly_Detector_model.joblib
 
 
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  test_data_path:
+    heart_rate_predictor: artifacts/data_transformation/test_heart_rate.csv
+    anomaly_detector: artifacts/data_transformation/test_is_anomaly.csv
+  model_path:
+    heart_rate_predictor: artifacts/model_trainer/Heart_Rate_Predictor_model.joblib
+    anomaly_detector: artifacts/model_trainer/Anomaly_Detector_model.joblib
+  report_path:
+    heart_rate_predictor: artifacts/model_evaluation/heart_rate_report.yaml
+    anomaly_detector: artifacts/model_evaluation/anomaly_report.yaml
+  target_columns:
+    heart_rate_predictor: heart_rate
+    anomaly_detector: is_anomaly
+
 

@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from pathlib import Path
 from typing import List
+from typing import Dict
+
 
 
 @dataclass(frozen=True)
@@ -35,3 +37,12 @@ class ModelTrainerConfig:
     
     heart_rate_target_column: str
     anomaly_target_column: str
+
+
+@dataclass
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_path: Dict[str, Path]   
+    model_path: Dict[str, Path]       
+    report_path: Dict[str, Path]      
+    target_columns: Dict[str, str]

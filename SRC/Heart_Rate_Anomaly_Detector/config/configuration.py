@@ -1,6 +1,6 @@
 from Heart_Rate_Anomaly_Detector.constants import  *
 from Heart_Rate_Anomaly_Detector.utils.common import read_yaml, create_directories
-from Heart_Rate_Anomaly_Detector.entity.config_entity import (DataGenerationConfig, DataTransformationConfig, ModelTrainerConfig)
+from Heart_Rate_Anomaly_Detector.entity.config_entity import (DataGenerationConfig, DataTransformationConfig, ModelTrainerConfig, ModelEvaluationConfig)
 
 
 
@@ -88,3 +88,21 @@ class ConfigurationManager:
     def get_column_dtypes(self) -> dict:
         
         return self.schema.columns
+    
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        config = self.config.model_evaluation
+
+        
+        create_directories([config.root_dir])
+
+       
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=Path(config.root_dir),
+            test_data_path={k: Path(v) for k, v in config.test_data_path.items()},
+            model_path={k: Path(v) for k, v in config.model_path.items()},
+            report_path={k: Path(v) for k, v in config.report_path.items()},
+            target_columns={k: v for k, v in config.target_columns.items()}
+        )
+
+        return model_evaluation_config

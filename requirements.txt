@@ -4,7 +4,6 @@ mlflow
 notebook
 numpy
 scikit-learn
-lightgbm
 seaborn
 matplotlib
 python-box

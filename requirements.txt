@@ -13,4 +13,7 @@ ensure
 joblib
 types-pyYAML
 plotly
+fastapi
+uvicorn
+pydantic
 -e .

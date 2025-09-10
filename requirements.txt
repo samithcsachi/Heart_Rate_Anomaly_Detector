@@ -16,4 +16,5 @@ plotly
 fastapi
 uvicorn
 pydantic
+streamlit
 -e .

@@ -1,0 +1,55 @@
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.log
+
+# Ignore virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Ignore Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Ignore dataset files (you can mount them separately if needed)
+data/
+datasets/
+*.csv
+*.tsv
+*.json
+*.xlsx
+
+# Ignore local config and secrets
+*.env
+.env.*
+secrets/
+config/
+
+# Ignore Git and IDE files
+.git/
+.gitignore
+.gitattributes
+*.swp
+*.swo
+*.idea/
+.vscode/
+
+# Ignore build/test artifacts
+dist/
+build/
+*.egg-info/
+htmlcov/
+.coverage
+.pytest_cache/
+
+# Ignore Docker-specific stuff
+Dockerfile*
+docker-compose*.yml
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db

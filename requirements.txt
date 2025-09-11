@@ -3,7 +3,7 @@ faker
 mlflow
 notebook
 numpy
-scikit-learn
+scikit-learn==1.7.1
 seaborn
 matplotlib
 python-box
@@ -17,4 +17,4 @@ fastapi
 uvicorn
 pydantic
 streamlit
--e .
+#-e .

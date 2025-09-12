@@ -17,4 +17,6 @@ fastapi
 uvicorn
 pydantic
 streamlit
-#-e .
+huggingface_hub
+git-lfs
+-e .

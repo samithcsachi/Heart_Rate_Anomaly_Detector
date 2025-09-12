@@ -5,6 +5,31 @@ from datetime import datetime
 from typing import Literal, Annotated
 from pydantic import BaseModel, Field
 
+
+
+import os
+import requests
+
+HF_REPO = "samithcs/heart-rate-models"
+HEART_MODEL_FILENAME = "Heart_Rate_Predictor_model.joblib"
+ANOMALY_MODEL_FILENAME = "Anomaly_Detector_model.joblib"
+
+def download_from_hf(filename):
+    url = f"https://huggingface.co/{HF_REPO}/resolve/main/{filename}"
+    if not os.path.exists(filename):
+        with requests.get(url, stream=True) as r:
+            r.raise_for_status()
+            with open(filename, "wb") as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+
+download_from_hf(HEART_MODEL_FILENAME)
+download_from_hf(ANOMALY_MODEL_FILENAME)
+
+
+
+
+
 # ===============================
 # Define request schemas
 # ===============================
@@ -53,11 +78,11 @@ class AnomalyInput(BaseModel):
 # ===============================
 # Load models
 # ===============================
-heart_model_artifacts = joblib.load("artifacts/model_trainer/Heart_Rate_Predictor_model.joblib")
+heart_model_artifacts = joblib.load(HEART_MODEL_FILENAME)
 heart_model = heart_model_artifacts['model']
 heart_features = heart_model_artifacts['feature_columns']
 
-anomaly_model_artifacts = joblib.load("artifacts/model_trainer/Anomaly_Detector_model.joblib")
+anomaly_model_artifacts = joblib.load(ANOMALY_MODEL_FILENAME)
 anomaly_model = anomaly_model_artifacts['model']
 anomaly_features = anomaly_model_artifacts['feature_columns']
 

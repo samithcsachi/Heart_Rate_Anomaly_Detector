@@ -42,7 +42,9 @@ This project demonstrates not only the technical aspects of model building but a
 
 
 Hugging Face Spaces Streamlit App link : [https://huggingface.co/spaces/samithcs/health-monitoring-app-streamlit](https://huggingface.co/spaces/samithcs/health-monitoring-app-streamlit)
+
 Hugging Face Spaces Fast API  link : [https://samithcs-health-monitoring-app-fastapi.hf.space/docs](https://samithcs-health-monitoring-app-fastapi.hf.space/docs)
+
 Docker link : [https://hub.docker.com/r/samithc/health-monitoring-app-api](https://hub.docker.com/r/samithc/health-monitoring-app-api)
 
 

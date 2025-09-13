@@ -40,6 +40,12 @@ Key Deployment Platforms:
 
 This project demonstrates not only the technical aspects of model building but also the operational way of machine learning models across diverse platforms.
 
+
+Hugging Face Spaces Streamlit App link : [https://huggingface.co/spaces/samithcs/health-monitoring-app-streamlit](https://huggingface.co/spaces/samithcs/health-monitoring-app-streamlit)
+Hugging Face Spaces Fast API  link : [https://samithcs-health-monitoring-app-fastapi.hf.space/docs](https://samithcs-health-monitoring-app-fastapi.hf.space/docs)
+Docker link : [https://hub.docker.com/r/samithc/health-monitoring-app-api](https://hub.docker.com/r/samithc/health-monitoring-app-api)
+
+
 ## Authors
 
 - [Samith Chimminiyan](https://www.github.com/samithcsachi)
@@ -104,6 +110,7 @@ Streamlit App in Hugging Face Space
 
 ![MAIN](assets/HF_ST_1.jpg)
 ![SECOND](assets/HF_ST_2.jpg)
+
 FAST API in Hugging Face Space  
 
 ![MAIN](assets/HF_ST_1.jpg)
@@ -136,7 +143,6 @@ Model Performance Improvements:
 - Regression: Train RMSE: 2.9274 | Test RMSE: 7.5917 | Train MAE: 2.0870 | Test MAE: 5.9427 | Test R²: 0.9075
 
 - Classification: Train Accuracy: 0.9642 | Test Accuracy: 0.9489 | Precision: 0.0064 | Recall: 0.0467 | F1 Score: 0.0113
-
 
 
 

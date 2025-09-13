@@ -14,14 +14,30 @@ HF_REPO = "samithcs/heart-rate-models"
 HEART_MODEL_FILENAME = "Heart_Rate_Predictor_model.joblib"
 ANOMALY_MODEL_FILENAME = "Anomaly_Detector_model.joblib"
 
+
+MODEL_DIR = os.path.join("artifacts", "model_trainer")
+os.makedirs(MODEL_DIR, exist_ok=True)
+
 def download_from_hf(filename):
+    local_path = os.path.join(MODEL_DIR, filename)
+
+  
+    if os.path.exists(local_path):
+        print(f"✅ {filename} already exists at {local_path}")
+        return local_path
+
+ 
     url = f"https://huggingface.co/{HF_REPO}/resolve/main/{filename}"
-    if not os.path.exists(filename):
-        with requests.get(url, stream=True) as r:
-            r.raise_for_status()
-            with open(filename, "wb") as f:
-                for chunk in r.iter_content(chunk_size=8192):
-                    f.write(chunk)
+    print(f"⬇️ Downloading {filename} from {url} ...")
+    with requests.get(url, stream=True) as r:
+        r.raise_for_status()
+        with open(local_path, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
+    print(f"✅ Downloaded {filename} to {local_path}")
+    return local_path
+
+
 
 download_from_hf(HEART_MODEL_FILENAME)
 download_from_hf(ANOMALY_MODEL_FILENAME)
@@ -78,11 +94,19 @@ class AnomalyInput(BaseModel):
 # ===============================
 # Load models
 # ===============================
-heart_model_artifacts = joblib.load(HEART_MODEL_FILENAME)
+
+MODEL_DIR = os.path.join("artifacts", "model_trainer")
+
+
+HEART_MODEL_PATH = os.path.join(MODEL_DIR, "Heart_Rate_Predictor_model.joblib")
+ANOMALY_MODEL_PATH = os.path.join(MODEL_DIR, "Anomaly_Detector_model.joblib")
+
+
+heart_model_artifacts = joblib.load(HEART_MODEL_PATH)
 heart_model = heart_model_artifacts['model']
 heart_features = heart_model_artifacts['feature_columns']
 
-anomaly_model_artifacts = joblib.load(ANOMALY_MODEL_FILENAME)
+anomaly_model_artifacts = joblib.load(ANOMALY_MODEL_PATH)
 anomaly_model = anomaly_model_artifacts['model']
 anomaly_features = anomaly_model_artifacts['feature_columns']
 
